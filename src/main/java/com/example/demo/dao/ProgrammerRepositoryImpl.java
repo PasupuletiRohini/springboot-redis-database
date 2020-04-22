@@ -24,7 +24,7 @@ public class ProgrammerRepositoryImpl implements ProgrammerRepository{
     public void setProgrammerAsString(String idKey, String programmer) {
         // opsForValue is used for String data type
         redisTemplate.opsForValue().set(idKey, programmer);
-        redisTemplate.expire(idKey, 10, TimeUnit.SECONDS);
+        //redisTemplate.expire(idKey, 10, TimeUnit.SECONDS);
     }
 
     @Override

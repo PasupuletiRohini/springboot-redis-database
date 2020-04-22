@@ -1,1 +1,1 @@
-Repository for springboot applcation with redis database
+Repository for springboot application with redis database / cache

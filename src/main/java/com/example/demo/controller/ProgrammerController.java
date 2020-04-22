@@ -5,6 +5,7 @@ import com.example.demo.service.ProgrammerService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,6 +24,7 @@ public class ProgrammerController {
         programmerService.setProgrammerAsString(String.valueOf(programmer.getId()), om.writeValueAsString(programmer));
     }
 
+    @Cacheable(key = "#id", value = "programs") // instead of going to database for the ids which are present in cache
     @GetMapping("/programmer-string/{id}")
     public String readString(@PathVariable String id) {
      return programmerService.getProgrammerAsString(id);
